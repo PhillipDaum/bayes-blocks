@@ -1,0 +1,112 @@
+:root {
+    /* Good Blocks */
+    --good-block-01-background: #B3E5FC; /* Light Blue */
+    --good-block-01-border: #81D4FA; /* Light Blue Border */
+
+    --good-block-02-background: #FFCDD2; /* Light Red */
+    --good-block-02-border: #EF9A9A; /* Light Red Border */
+
+    --good-block-03-background: #C8E6C9; /* Light Green */
+    --good-block-03-border: #A5D6A7; /* Light Green Border */
+
+    /* Bad Blocks */
+    --bad-block-01-background: #FFE082; /* Light Yellow */
+    --bad-block-01-border: #FFD54F; /* Light Yellow Border */
+    --bad-block-01-background-broken: #FFEB3B; /* Brighter Yellow */
+
+    --bad-block-02-background: #FFAB91; /* Light Orange */
+    --bad-block-02-border: #FF8A65; /* Light Orange Border */
+    --bad-block-02-background-broken: #FF7043; /* Brighter Orange */
+
+    /* Super Good Blocks (with emojis) */
+    --really-good-block-01-background: #D1C4E9; /* Light Purple */
+    --really-good-block-01-border: #B39DDB; /* Light Purple Border */
+
+    --really-good-block-02-background: #F8BBD0; /* Light Pink */
+    --really-good-block-02-border: #F48FB1; /* Light Pink Border */
+
+    /* Super Bad Blocks (with emojis) */
+    --really-bad-block-01-background: #FFCCBC; /* Light Coral */
+    --really-bad-block-01-border: #FF8A65; /* Light Coral Border */
+
+    --really-bad-block-02-background: #E6EE9C; /* Light Lime */
+    --really-bad-block-02-border: #DCE775; /* Light Lime Border */
+}
+
+
+/* the game board */
+.game-wrapper {
+    font-family: monospace;
+    width: 55.5rem;
+    margin: auto;
+    border-left: .3rem black solid;
+    border-right: .3rem black solid;
+}
+.game-top {
+    padding-left: .5rem;
+    padding-right: .5rem;
+    font-size: 1.6rem;
+}
+.row {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}
+.kitchen {
+    width: 100%;
+    margin-top: 9rem;
+}
+.paddle {
+    height: 1rem;
+    background-color: black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: auto;
+    border-radius: .2rem;
+}
+
+/* blocks */
+.good-01 {
+    background-color: var(--good-block-01-background);
+    border: solid .2rem var(--good-block-01-border);
+}
+.good-02 {
+    background-color: var(--good-block-02-background);
+    border: solid .2rem var(--good-block-02-border);
+}
+.good-03 {
+    background-color: var(--good-block-03-background);
+    border: solid .2rem var(--good-block-03-border);
+}
+.bad-01 {
+    background-color: var(--bad-block-01-background);
+    border: solid .2rem var(--bad-block-01-border);
+}
+.bad-01-broken {
+    background-color: var(--bad-block-01-background-broken);
+    border: solid .2rem var(--bad-block-01-border);
+}
+.bad-02 {
+    background-color: var(--bad-block-02-background);
+    border: solid .2rem var(--bad-block-02-border);
+}
+.bad-02-broken {
+    background-color: var(--bad-block-02-background-broken);
+    border: solid .2rem var(--bad-block-02-border);
+}
+.really-good-01 {
+    background-color: var(--really-good-block-01-background);
+    border: solid .2rem var(--really-good-block-01-border);
+}
+.really-good-02 {
+    background-color: var(--really-good-block-02-background);
+    border: solid .2rem var(--really-good-block-02-border);
+}
+.really-bad-01 {
+    background-color: var(--really-bad-block-01-background);
+    border: solid .2rem var(--really-bad-block-01-border);
+}
+.really-bad-02 {
+    background-color: var(--really-bad-block-02-background);
+    border: solid .2rem var(--really-bad-block-02-border);
+}
+  
