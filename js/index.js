@@ -56,6 +56,12 @@ function makeManyRows() {
 }
 makeManyRows();
 
+function moveBall() {
+  let ball = document.createElement('div');
+  ball.className = "ball";
+  document.querySelector(".kitchen").appendChild(ball);
+}
+moveBall()
 // paddle moves around 
 document.addEventListener("keydown", move);
 let paddlePosition = 42.5;

@@ -1,43 +1,43 @@
 :root {
     /* Good Blocks */
-    --good-block-01-background: #B3E5FC; /* Light Blue */
-    --good-block-01-border: #81D4FA; /* Light Blue Border */
+    --good-block-01-background: #E0F7FA; /* Pale Cyan */
+    --good-block-01-border: #B2EBF2; /* Pale Cyan Border */
 
-    --good-block-02-background: #FFCDD2; /* Light Red */
-    --good-block-02-border: #EF9A9A; /* Light Red Border */
+    --good-block-02-background: #FFEBEE; /* Pale Red */
+    --good-block-02-border: #FFCDD2; /* Pale Red Border */
 
-    --good-block-03-background: #C8E6C9; /* Light Green */
-    --good-block-03-border: #A5D6A7; /* Light Green Border */
+    --good-block-03-background: #E8F5E9; /* Pale Green */
+    --good-block-03-border: #C8E6C9; /* Pale Green Border */
 
     /* Bad Blocks */
-    --bad-block-01-background: #FFE082; /* Light Yellow */
-    --bad-block-01-border: #FFD54F; /* Light Yellow Border */
-    --bad-block-01-background-broken: #FFEB3B; /* Brighter Yellow */
+    --bad-block-01-background: #BDBDBD; /* Light Grey */
+    --bad-block-01-border: #9E9E9E; /* Medium Grey Border */
+    --bad-block-01-background-broken: #757575; /* Darker Grey */
 
-    --bad-block-02-background: #FFAB91; /* Light Orange */
-    --bad-block-02-border: #FF8A65; /* Light Orange Border */
-    --bad-block-02-background-broken: #FF7043; /* Brighter Orange */
+    --bad-block-02-background: #BDBDBD; /* Light Grey */
+    --bad-block-02-border: #9E9E9E; /* Medium Grey Border */
+    --bad-block-02-background-broken: #757575; /* Darker Grey */
 
-    /* Super Good Blocks (with emojis) */
-    --really-good-block-01-background: #D1C4E9; /* Light Purple */
-    --really-good-block-01-border: #B39DDB; /* Light Purple Border */
+    /* Super Good Blocks */
+    --really-good-block-01-background: #FFEE58; /* Bright Yellow */
+    --really-good-block-01-border: #FFEB3B; /* Bright Yellow Border */
 
-    --really-good-block-02-background: #F8BBD0; /* Light Pink */
-    --really-good-block-02-border: #F48FB1; /* Light Pink Border */
+    --really-good-block-02-background: #FF4081; /* Bright Pink */
+    --really-good-block-02-border: #F50057; /* Bright Pink Border */
 
-    /* Super Bad Blocks (with emojis) */
-    --really-bad-block-01-background: #FFCCBC; /* Light Coral */
-    --really-bad-block-01-border: #FF8A65; /* Light Coral Border */
+    /* Super Bad Blocks */
+    --really-bad-block-01-background: #616161; /* Dark Grey */
+    --really-bad-block-01-border: #424242; /* Darker Grey Border */
 
-    --really-bad-block-02-background: #E6EE9C; /* Light Lime */
-    --really-bad-block-02-border: #DCE775; /* Light Lime Border */
+    --really-bad-block-02-background: #757575; /* Medium Dark Grey */
+    --really-bad-block-02-border: #616161; /* Dark Grey Border */
 }
 
 
 /* the game board */
 .game-wrapper {
     font-family: monospace;
-    width: 55.5rem;
+    width: 58rem;
     margin: auto;
     border-left: .3rem black solid;
     border-right: .3rem black solid;
@@ -52,8 +52,10 @@
     grid-template-columns: repeat(9, 1fr);
 }
 .kitchen {
+    height: 22rem;
+}
+.living-room {
     width: 100%;
-    margin-top: 9rem;
 }
 .paddle {
     height: 1rem;
@@ -61,6 +63,15 @@
     width: 15%;
     margin-right: auto;
     border-radius: .2rem;
+}
+.ball {
+    height: 2rem;
+    width: 2rem;
+    margin-left: 14%;
+    margin-right: auto;
+    padding-bottom: 0;
+    border-radius: 50%;
+    background-color: black;
 }
 
 /* blocks */
