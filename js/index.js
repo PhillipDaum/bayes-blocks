@@ -1,18 +1,14 @@
 // maybe like have a counter or something and if each block has been passed through the function (x) times it goes away or something
 import blocks from "./components.js";
+// let a;
+// let b;
+// let probabilityOfA;
+// let probabilityOfB;
+// let probabilityofBGivenA;
+// let probabilityOfAGivenB =
+//   (probabilityofBGivenA * probabilityOfA) / probabilityOfB;
 
-let a;
-let b;
-let probabilityOfA;
-let probabilityOfB;
-let probabilityofBGivenA;
-let probabilityOfAGivenB =
-  (probabilityofBGivenA * probabilityOfA) / probabilityOfB;
 
-// block types css classes.
-// bay theorem each row.
-//90% chance of a good block, a 9% chance of a bad block and .5 for each super block
-//
 let oldRow = [];
 let newRow = [];
 
@@ -36,7 +32,7 @@ function makeRowArray() {
 }
 
 function makeRow() {
-    makeRowArray();
+  makeRowArray();
   let row = document.createElement("div");
   row.className = "row";
   row.id = "row-"; //+i
@@ -59,20 +55,23 @@ function makeManyRows() {
   }
 }
 makeManyRows();
-function moveRight() {
-    // change number in css class
 
-}
+// paddle moves around 
+document.addEventListener("keydown", move);
+let paddlePosition = 42.5;
+function move(e) {
+    if (e.code === "ArrowLeft" && paddlePosition > 0) {
+      paddlePosition = paddlePosition - 1 ;
+      document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;  
+    } else if (e.code === "ArrowRight" && paddlePosition < 85) {
+        console.log("Right");
+        paddlePosition = paddlePosition + 1;
+        document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;
+        console.log("Right", paddlePosition)
+    };
+  };
 
-function moveLeft() {
-    //
-}
 
-function moveThePaddle() {
-    paddle.addEventListener("keydown", function)
-
-
-}
 // side key event listeners can move 1% per 5 miliseconds
 
 // move paddle. reset css value as a whole number percentage all the way left 0 to 85% all the way right
