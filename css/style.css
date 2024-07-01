@@ -71,7 +71,6 @@
     height: 2rem;
     width: 2rem;
     /* 0 to 97 - controlled by marginLeft*/
-    margin-left: 97%;
     margin-right: auto;
     border-radius: 50%;
     background-color: black;
@@ -81,7 +80,6 @@
     /* do height in rem 0 - 22 */
     /* minus numbers go below paddle like -15rem */
     /* maybe 15 rem per second */
-    margin-bottom:-10rem;
     width: 100%;
 }
 

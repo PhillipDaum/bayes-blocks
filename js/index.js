@@ -56,35 +56,56 @@ function makeManyRows() {
 }
 makeManyRows();
 
+
+// paddle moves side to side
+document.addEventListener("keydown", move);
+let paddlePosition = 42.5;
+function move(e) {
+  if (e.code === "ArrowLeft" && paddlePosition > 0) {
+    paddlePosition = paddlePosition - 1;
+    document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;
+  } else if (e.code === "ArrowRight" && paddlePosition < 85) {
+    console.log("Right");
+    paddlePosition = paddlePosition + 1;
+    document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;
+    console.log("Right", paddlePosition)
+  };
+};
+
+const gravity = [
+  { transform: "translateY(90rem)" 
+},
+];
+
+const frameRate = {
+  duration: 2000,
+  // iterations: Infinity,
+};
+
+
 function moveBall() {
   // makes the ball
   let ball = document.createElement('div');
   ball.className = "ball";
+  ball.id = "ball";
   document.querySelector(".ball-holder").appendChild(ball);
-  // make the ball fall at 15rem/second
-  // x axis between 0 and 97
-  let ballX = 48.5;
-  // for now 0-22rem in the kitchen
+  let ballX = 40;
   let ballY = 11;
+  console.log(ballX, "poop")
+  // x axis between 0 and 97
+  document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+  // for now 0-22rem in the kitchen
+  let moveBallY = document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+  // make the ball fall at 15rem/second
+  ball.animate(gravity, frameRate);
+
   // if it hits anything, it bounces off with an equal and opposite angle
 
 }
 moveBall()
 
-// paddle moves around 
-document.addEventListener("keydown", move);
-let paddlePosition = 42.5;
-function move(e) {
-    if (e.code === "ArrowLeft" && paddlePosition > 0) {
-      paddlePosition = paddlePosition - 1 ;
-      document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;  
-    } else if (e.code === "ArrowRight" && paddlePosition < 85) {
-        console.log("Right");
-        paddlePosition = paddlePosition + 1;
-        document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;
-        console.log("Right", paddlePosition)
-    };
-  };
+
+
 
 
 // side key event listeners can move 1% per 5 miliseconds
