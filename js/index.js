@@ -73,19 +73,9 @@ function move(e) {
   };
 };
 
-const movement = [
-  { transform: "translateY(-30rem)" 
-},
-];
-
-const frameRate = {
-  duration: 2000,
-  // iterations: Infinity,
-};
-
 let ball;
-let ballX;
-let ballY;
+let ballX = 1;
+let ballY = 1;
 function makeBall() {
   // makes the ball
   ball = document.createElement('div');
@@ -95,13 +85,43 @@ function makeBall() {
 }
 makeBall()
 
+// movement can be a loop, maybe a while loop
+// then wait a few miiliseconds and then 
+
+
+
+
+let movingUp = true;
+let speed = 40;
 function moveBall() {
-  // x axis between 0 and 97
-  document.querySelector("#ball").style.marginLeft = `${ballX}%`;
-  // for now 0-22rem in the kitchen
-  let moveBallY = document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+  // if movingUp === true and ballholder.marginTop > 0
+  let hit = document.querySelector(".ball-holder");
+  let style = window.getComputedStyle(hit);
+  let top = style.getPropertyValue('margin-top');
+  let topValue = top.split("p")[0];
+  console.log(topValue);
+  if (movingUp === true && topValue > 0) {
+    console.log(topValue);
+    // x axis between 0 and 97
+     document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+    // for now 0-22rem in the kitchen
+    document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+    ballX++;
+    ballY++;
+    setTimeout(moveBall, speed)
+   } else {
+    movingUp = false;
+    console.log(topValue);
+    // x axis between 0 and 97
+     document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+    // for now 0-22rem in the kitchen
+    document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+    ballX++;
+    ballY--;
+    setTimeout(moveBall, speed)
+   }
+
   // make the ball fall at 15rem/second
-  ball.animate(movement, frameRate);
   // if the ball position is the same as anything else
   // if it hits anything, it bounces off with an equal and opposite angle
 }
@@ -112,15 +132,3 @@ function playGame() {
   moveBall();
   startButton.style.display = "none";
 }
-
-
-// side key event listeners can move 1% per 5 miliseconds
-
-// move paddle. reset css value as a whole number percentage all the way left 0 to 85% all the way right
-// the middle is at 42.5%
-// `${movement}%`
-// blocks really otta come as rows just pushing down.
-// then the blocks can be of two types,
-// they may or may not take up one, two, or three grid spaces.
-
-// they could maybe push back into the array lol
