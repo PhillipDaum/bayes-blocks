@@ -33,6 +33,19 @@
     --really-bad-block-02-border: #616161; /* Dark Grey Border */
 }
 
+.container  {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+.button {
+    padding: 2rem;
+    border: .4rem solid black;
+    border-radius: .3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
 /* the game board */
 .game-wrapper {

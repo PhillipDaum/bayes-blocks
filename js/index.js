@@ -40,6 +40,7 @@ function makeRow() {
   for (let i = 0; i < newRow.length; i++) {
     let block = document.createElement("div");
     let thisBlock = newRow[i];
+    block.id = "block";
     block.innerText = thisBlock.patterns[0];
     block.className = thisBlock.className;
     // push it to array.
@@ -50,7 +51,7 @@ function makeRow() {
 }
 
 function makeManyRows() {
-  for (let i = 0; i < 36; i++) {
+  for (let i = 0; i < 16; i++) {
     makeRow();
   }
 }
@@ -72,8 +73,8 @@ function move(e) {
   };
 };
 
-const gravity = [
-  { transform: "translateY(90rem)" 
+const movement = [
+  { transform: "translateY(-30rem)" 
 },
 ];
 
@@ -82,30 +83,35 @@ const frameRate = {
   // iterations: Infinity,
 };
 
-
-function moveBall() {
+let ball;
+let ballX;
+let ballY;
+function makeBall() {
   // makes the ball
-  let ball = document.createElement('div');
+  ball = document.createElement('div');
   ball.className = "ball";
   ball.id = "ball";
   document.querySelector(".ball-holder").appendChild(ball);
-  let ballX = 40;
-  let ballY = 11;
-  console.log(ballX, "poop")
+}
+makeBall()
+
+function moveBall() {
   // x axis between 0 and 97
   document.querySelector("#ball").style.marginLeft = `${ballX}%`;
   // for now 0-22rem in the kitchen
   let moveBallY = document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
   // make the ball fall at 15rem/second
-  ball.animate(gravity, frameRate);
-
+  ball.animate(movement, frameRate);
+  // if the ball position is the same as anything else
   // if it hits anything, it bounces off with an equal and opposite angle
-
 }
-moveBall()
 
-
-
+let startButton = document.querySelector("#start");
+startButton.addEventListener("click", playGame);
+function playGame() {
+  moveBall();
+  startButton.style.display = "none";
+}
 
 
 // side key event listeners can move 1% per 5 miliseconds
