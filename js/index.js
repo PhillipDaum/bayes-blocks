@@ -59,7 +59,7 @@ makeManyRows();
 function moveBall() {
   let ball = document.createElement('div');
   ball.className = "ball";
-  document.querySelector(".kitchen").appendChild(ball);
+  document.querySelector(".ball-holder").appendChild(ball);
 }
 moveBall()
 // paddle moves around 

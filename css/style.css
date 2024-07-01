@@ -51,6 +51,7 @@
     display: grid;
     grid-template-columns: repeat(9, 1fr);
 }
+/* maybe use vh */
 .kitchen {
     height: 22rem;
 }
@@ -73,6 +74,10 @@
     border-radius: 50%;
     background-color: black;
 }
+.ball-holder {
+    margin-bottom: 10%;
+}
+
 
 /* blocks */
 .good-01 {
