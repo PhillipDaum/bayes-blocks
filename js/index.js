@@ -57,11 +57,20 @@ function makeManyRows() {
 makeManyRows();
 
 function moveBall() {
+  // makes the ball
   let ball = document.createElement('div');
   ball.className = "ball";
   document.querySelector(".ball-holder").appendChild(ball);
+  // make the ball fall at 15rem/second
+  // x axis between 0 and 97
+  let ballX = 48.5;
+  // for now 0-22rem in the kitchen
+  let ballY = 11;
+  // if it hits anything, it bounces off with an equal and opposite angle
+
 }
 moveBall()
+
 // paddle moves around 
 document.addEventListener("keydown", move);
 let paddlePosition = 42.5;
