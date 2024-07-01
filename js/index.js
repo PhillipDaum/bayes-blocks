@@ -90,7 +90,7 @@ makeBall()
 
 
 
-
+let moving;
 let movingUp = true;
 let speed = 40;
 function moveBall() {
@@ -99,36 +99,38 @@ function moveBall() {
   let style = window.getComputedStyle(hit);
   let top = style.getPropertyValue('margin-top');
   let topValue = top.split("p")[0];
-  console.log(topValue);
-  if (movingUp === true && topValue > 0) {
-    console.log(topValue);
-    // x axis between 0 and 97
-     document.querySelector("#ball").style.marginLeft = `${ballX}%`;
-    // for now 0-22rem in the kitchen
-    document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
-    ballX++;
-    ballY++;
-    setTimeout(moveBall, speed)
-   } else {
-    movingUp = false;
-    console.log(topValue);
-    // x axis between 0 and 97
-     document.querySelector("#ball").style.marginLeft = `${ballX}%`;
-    // for now 0-22rem in the kitchen
-    document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
-    ballX++;
-    ballY--;
-    setTimeout(moveBall, speed)
-   }
+    if (movingUp === true && topValue > 0) {
+      console.log(topValue);
+      // x axis between 0 and 97
+       document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      // for now 0-22rem in the kitchen
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY++;
+      setTimeout(moveBall, speed)
+     } else if (ballY === -1 && ballX >= (paddlePosition -7.5) && ballX <= (paddlePosition + 7.5)) {
+      console.log("make money");
+      movingUp = true;
+      setTimeout(moveBall, speed)
+     }
+     else {
+      console.log("lose moeny")
+      // unless the margin bottom is 0 and its in the same space as the paddle
+      movingUp = false;
+       document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed)
+     }
 
-  // make the ball fall at 15rem/second
-  // if the ball position is the same as anything else
-  // if it hits anything, it bounces off with an equal and opposite angle
+
 }
 
 let startButton = document.querySelector("#start");
 startButton.addEventListener("click", playGame);
 function playGame() {
+  moving = true;
   moveBall();
   startButton.style.display = "none";
 }
