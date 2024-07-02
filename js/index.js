@@ -87,7 +87,7 @@ function makeBall() {
 makeBall()
 
 
-let moving;
+// let moving;
 let movingUp = true;
 let speed = 40;
 function moveBall() {
@@ -116,18 +116,26 @@ function moveBall() {
       document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
       ballX++;
       ballY--;
-      setTimeout(moveBall, speed)
+      setTimeout(moveBall, speed);
      }
 }
 
-function breakBlocks() {
+
 // https://bobbyhadz.com/blog/javascript-check-if-two-elements-overlap
-}
+  let aBlock = document.querySelectorAll("#block");
+  console.log(aBlock);
+  const domRect1 = ball.getBoundingClientRect();
+  let domRect2 = aBlock.getBoundingClientRect();
+  if (domRect1.top >= domRect2.bottom) {
+    console.log("break that block!!!")
+  }
+
+
 
 let startButton = document.querySelector("#start");
 startButton.addEventListener("click", playGame);
 function playGame() {
-  moving = true;
+  // moving = true;
   moveBall();
   startButton.style.display = "none";
 }
