@@ -31,6 +31,7 @@ function makeRowArray() {
   }
 }
 
+// I think I'm gonna want to set each one a spot in the grid
 function makeRow() {
   makeRowArray();
   let row = document.createElement("div");
@@ -63,11 +64,11 @@ document.addEventListener("keydown", move);
 let paddlePosition = 42.5;
 function move(e) {
   if (e.code === "ArrowLeft" && paddlePosition > 0) {
-    paddlePosition = paddlePosition - 1;
+    paddlePosition = paddlePosition - 3;
     document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;
   } else if (e.code === "ArrowRight" && paddlePosition < 85) {
     console.log("Right");
-    paddlePosition = paddlePosition + 1;
+    paddlePosition = paddlePosition + 3;
     document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;
     console.log("Right", paddlePosition)
   };
@@ -84,10 +85,6 @@ function makeBall() {
   document.querySelector(".ball-holder").appendChild(ball);
 }
 makeBall()
-
-// movement can be a loop, maybe a while loop
-// then wait a few miiliseconds and then 
-
 
 
 let moving;
@@ -108,13 +105,11 @@ function moveBall() {
       ballX++;
       ballY++;
       setTimeout(moveBall, speed)
-     } else if (ballY === -1 && ballX >= (paddlePosition -7.5) && ballX <= (paddlePosition + 7.5)) {
-      console.log("make money");
+     } else if (movingUp === false && ballY > -1.5 && ballY < 1 && ballX >= (paddlePosition -7.5) && ballX <= (paddlePosition + 7.5)) {
       movingUp = true;
       setTimeout(moveBall, speed)
      }
      else {
-      console.log("lose moeny")
       // unless the margin bottom is 0 and its in the same space as the paddle
       movingUp = false;
        document.querySelector("#ball").style.marginLeft = `${ballX}%`;
@@ -123,8 +118,10 @@ function moveBall() {
       ballY--;
       setTimeout(moveBall, speed)
      }
+}
 
-
+function breakBlocks() {
+// https://bobbyhadz.com/blog/javascript-check-if-two-elements-overlap
 }
 
 let startButton = document.querySelector("#start");
