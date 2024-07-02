@@ -42,7 +42,7 @@ function makeRow() {
   for (let i = 0; i < newRow.length; i++) {
     let block = document.createElement("div");
     let thisBlock = newRow[i];
-    block.id = "block";
+    block.id = "block-" + i;
     block.innerText = thisBlock.patterns[0];
     block.className = thisBlock.className;
     // tweek
@@ -67,10 +67,8 @@ function move(e) {
     paddlePosition = paddlePosition - 3;
     document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;
   } else if (e.code === "ArrowRight" && paddlePosition < 85) {
-    console.log("Right");
     paddlePosition = paddlePosition + 3;
     document.querySelector("#paddle").style.marginLeft = `${paddlePosition}%`;
-    console.log("Right", paddlePosition)
   };
 };
 
@@ -88,41 +86,109 @@ makeBall()
 
 // let moving;
 let movingUp = true;
+let movingDown = false;
 let speed = 40;
 function moveBall() {
-  // if movingUp === true and ballholder.marginTop > 0
   let hit = document.querySelector(".ball-holder");
   let style = window.getComputedStyle(hit);
   let top = style.getPropertyValue('margin-top');
   let topValue = top.split("p")[0];
-    if (movingUp === true && topValue > 0) {
-      console.log(topValue);
-      // x axis between 0 and 97
-       document.querySelector("#ball").style.marginLeft = `${ballX}%`;
-      // for now 0-22rem in the kitchen
-      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
-      ballX++;
-      ballY++;
-      setTimeout(moveBall, speed)
-     } else if (movingUp === false && ballY > -1.5 && ballY < 1 && ballX >= (paddlePosition -7.5) && ballX <= (paddlePosition + 7.5)) {
-      // bounces off paddle (more or less)
-      movingUp = true;
-      setTimeout(moveBall, speed)
-     }
-     else {
-      // here can put the thing to break a block
-      // get x position of ball, convert to grid
-      // remove the element directly above it
-      // have a list of matching pairs which will find the right thing.
-      movingUp = false;
+  if (movingUp === true && topValue > 0) {
+    // x axis between 0 and 97
+    document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+    // for now 0-22rem in the kitchen
+    document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+    ballX++;
+    ballY++;
+    setTimeout(moveBall, speed)
+  } else if (movingUp === false && ballY > -1.5 && ballY < 1 && ballX >= (paddlePosition - 7.5) && ballX <= (paddlePosition + 7.5)) {
+    // bounces off paddle (more or less)
+    movingUp = true;
+    setTimeout(moveBall, speed)
+  } else if (movingUp === true) {
+    movingUp = false;
+    movingDown = true;
+    if (ballX < 11) {
+      console.log("break 1");
       document.querySelector("#ball").style.marginLeft = `${ballX}%`;
       document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
       ballX++;
       ballY--;
       setTimeout(moveBall, speed);
-     }
+    } else if (ballX >= 11 && ballX <= 21) {
+      console.log("break 2");
+      // let block = document.querySelector
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed);
+    } else if (ballX > 21 && ballX < 33) {
+      console.log("break 3");
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed);
+    } else if (ballX > 33 && ballX < 44) {
+      console.log("break 4");
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed);
+    } else if (ballX > 44 && ballX < 55) {
+      console.log("break 5");
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed);
+    } else if (ballX > 55 && ballX < 66) {
+      console.log("break 6");
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed);
+    } else if (ballX > 66 && ballX < 77) {
+      console.log("break 7");
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed);
+    } else if (ballX > 77 && ballX < 88) {
+      console.log("break 8");
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed);
+    } else if (ballX > 88 && ballX < 100) {
+      console.log("break 9");
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+      ballX++;
+      ballY--;
+      setTimeout(moveBall, speed);
+    }
+    console.log(movingDown)
+  } else {
+    document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+    document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
+    ballX++;
+    ballY--;
+    setTimeout(moveBall, speed);
+  }
 }
 
+// use this to delete blocks!!
+// then assign each one a spot in the grid
+// let block = document.querySelectorAll("#block-2");
+// let blockSpot = block.length - 1;
+// block[blockSpot].remove();
+// console.log(block[blockSpot]);
 
 let startButton = document.querySelector("#start");
 startButton.addEventListener("click", playGame);
