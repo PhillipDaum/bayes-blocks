@@ -8,7 +8,6 @@ import blocks from "./components.js";
 // let probabilityOfAGivenB =
 //   (probabilityofBGivenA * probabilityOfA) / probabilityOfB;
 
-
 let oldRow = [];
 let newRow = [];
 
@@ -32,6 +31,8 @@ function makeRowArray() {
 }
 
 // I think I'm gonna want to set each one a spot in the grid
+// maybe each row can have a number
+// then each block can have a number
 function makeRow() {
   makeRowArray();
   let row = document.createElement("div");
@@ -44,7 +45,7 @@ function makeRow() {
     block.id = "block";
     block.innerText = thisBlock.patterns[0];
     block.className = thisBlock.className;
-    // push it to array.
+    // tweek
     document.getElementById("row-").appendChild(block);
     oldRow.push(newRow[i]);
   }
@@ -57,7 +58,6 @@ function makeManyRows() {
   }
 }
 makeManyRows();
-
 
 // paddle moves side to side
 document.addEventListener("keydown", move);
@@ -86,7 +86,6 @@ function makeBall() {
 }
 makeBall()
 
-
 // let moving;
 let movingUp = true;
 let speed = 40;
@@ -106,30 +105,23 @@ function moveBall() {
       ballY++;
       setTimeout(moveBall, speed)
      } else if (movingUp === false && ballY > -1.5 && ballY < 1 && ballX >= (paddlePosition -7.5) && ballX <= (paddlePosition + 7.5)) {
+      // bounces off paddle (more or less)
       movingUp = true;
       setTimeout(moveBall, speed)
      }
      else {
-      // unless the margin bottom is 0 and its in the same space as the paddle
+      // here can put the thing to break a block
+      // get x position of ball, convert to grid
+      // remove the element directly above it
+      // have a list of matching pairs which will find the right thing.
       movingUp = false;
-       document.querySelector("#ball").style.marginLeft = `${ballX}%`;
+      document.querySelector("#ball").style.marginLeft = `${ballX}%`;
       document.querySelector(".ball-holder").style.marginBottom = `${ballY}rem`;
       ballX++;
       ballY--;
       setTimeout(moveBall, speed);
      }
 }
-
-
-// https://bobbyhadz.com/blog/javascript-check-if-two-elements-overlap
-  let aBlock = document.querySelectorAll("#block");
-  console.log(aBlock);
-  const domRect1 = ball.getBoundingClientRect();
-  let domRect2 = aBlock.getBoundingClientRect();
-  if (domRect1.top >= domRect2.bottom) {
-    console.log("break that block!!!")
-  }
-
 
 
 let startButton = document.querySelector("#start");
